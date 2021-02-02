@@ -1,7 +1,7 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//check
+//check govna))))
 [CreateAssetMenu(menuName = "FPS/New Gun")]
 public class GunInfo : ItemInfo
 {
