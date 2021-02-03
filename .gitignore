@@ -13,6 +13,8 @@
 FPS Game/Library/*
 FPS Game/.vscode/*
 FPS Game/Temp/*
+FPS Game/Logs/*
+FPS Game/Obj/*
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
