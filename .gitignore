@@ -11,6 +11,8 @@
 /[Mm]emoryCaptures/
 
 FPS Game/Library/*
+FPS Game/.vscode/*
+FPS Game/Temp/*
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
 
