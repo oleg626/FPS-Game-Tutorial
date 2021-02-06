@@ -11,6 +11,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 	public static Launcher Instance;
 
 	[SerializeField] TMP_InputField roomNameInputField;
+	[SerializeField] TMP_InputField nickNameInputField;
 	[SerializeField] TMP_Text errorText;
 	[SerializeField] TMP_Text roomNameText;
 	[SerializeField] Transform roomListContent;
@@ -30,6 +31,25 @@ public class Launcher : MonoBehaviourPunCallbacks
 		PhotonNetwork.ConnectUsingSettings();
 	}
 
+	void Update()
+	{
+		string nick = nickNameInputField.text;
+		Player[] players = PhotonNetwork.PlayerList;
+
+		bool contains = false;
+
+		foreach(Player playa in players)
+		{
+			if (nick == playa.NickName)
+				contains = true;
+		}
+
+		if (contains)
+		{
+
+		}
+	}
+
 	public override void OnConnectedToMaster()
 	{
 		Debug.Log("Connected to Master");
@@ -41,7 +61,6 @@ public class Launcher : MonoBehaviourPunCallbacks
 	{
 		MenuManager.Instance.OpenMenu("title");
 		Debug.Log("Joined Lobby");
-		PhotonNetwork.NickName = "Player " + Random.Range(0, 1000).ToString("0000");
 	}
 
 	public void CreateRoom()
@@ -50,12 +69,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 		{
 			return;
 		}
+		PhotonNetwork.NickName = nickNameInputField.text;
 		PhotonNetwork.CreateRoom(roomNameInputField.text);
 		MenuManager.Instance.OpenMenu("loading");
 	}
 
 	public override void OnJoinedRoom()
 	{
+		PhotonNetwork.NickName = nickNameInputField.text;
 		MenuManager.Instance.OpenMenu("room");
 		roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
@@ -89,6 +110,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 	public void StartGame()
 	{
 		PhotonNetwork.LoadLevel(1);
+		Cursor.visible = false;
 	}
 
 	public void LeaveRoom()
