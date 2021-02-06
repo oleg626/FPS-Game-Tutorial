@@ -14,11 +14,6 @@ FPS Game/Temp/*
 FPS Game/Logs/*
 FPS Game/Obj/*
 FPS Game/Build/*
-FPS Game/Build/FPS Game_Data/*
-FPS Game/Build/FPS Game_Data/Managed/*
-FPS Game/Build/FPS Game_Data/Resources/*
-FPS Game/Build/EmbedRuntime/*
-FPS Game/Build/etc/*
 
 # Never ignore Asset meta data
 !/[Aa]ssets/**/*.meta
