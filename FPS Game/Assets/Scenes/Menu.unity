@@ -4966,7 +4966,8 @@ MonoBehaviour:
     type: 3}
   startGameButton: {fileID: 740400222}
   findRoomButton: {fileID: 1324654638}
-  createRoomButton: {fileID: 0}
+  createRoomTitleButton: {fileID: 477066596}
+  createRoomCreateButton: {fileID: 513533390}
 --- !u!114 &2125027183
 MonoBehaviour:
   m_ObjectHideFlags: 0
