@@ -62,18 +62,14 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 		if (roomName.Length == 0)
 		{
-			
 			createRoomCreateButton.SetActive(false);
 		}
-		else if(roomName[0] != ' ')
+		else if(roomName.Contains(" "))
 		{
-			findRoomButton.SetActive(false);
 			createRoomCreateButton.SetActive(false);
 		}
 		else
 		{
-			nickTaken.text = "";
-			findRoomButton.SetActive(true);
 			createRoomCreateButton.SetActive(true);
 		}
 	}
