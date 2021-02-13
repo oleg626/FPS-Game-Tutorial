@@ -43,19 +43,19 @@ public class Launcher : MonoBehaviourPunCallbacks
 		{
 			nickTaken.text = "Fill nickname";
 			findRoomButton.SetActive(false);
-			createRoomButton.SetActive(false);
+			createRoomTitleButton.SetActive(false);
 		}
 		else if(nick.Contains(" "))
 		{
 			nickTaken.text = "No spaces allowed!";
 			findRoomButton.SetActive(false);
-			createRoomButton.SetActive(false);
+			createRoomTitleButton.SetActive(false);
 		}
 		else
 		{
 			nickTaken.text = "";
 			findRoomButton.SetActive(true);
-			createRoomButton.SetActive(true);
+			createRoomTitleButton.SetActive(true);
 		}
 
 		string roomName = roomNameInputField.text;
@@ -63,18 +63,18 @@ public class Launcher : MonoBehaviourPunCallbacks
 		if (roomName.Length == 0)
 		{
 			
-			createRoomButton.SetActive(false);
+			createRoomCreateButton.SetActive(false);
 		}
 		else if(roomName[0] != ' ')
 		{
 			findRoomButton.SetActive(false);
-			createRoomButton.SetActive(false);
+			createRoomCreateButton.SetActive(false);
 		}
 		else
 		{
 			nickTaken.text = "";
 			findRoomButton.SetActive(true);
-			createRoomButton.SetActive(true);
+			createRoomCreateButton.SetActive(true);
 		}
 	}
 
