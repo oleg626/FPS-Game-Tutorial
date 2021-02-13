@@ -477,14 +477,13 @@ GameObject:
   - component: {fileID: 817899921}
   - component: {fileID: 817899923}
   - component: {fileID: 817899922}
-  - component: {fileID: 817899925}
   m_Layer: 0
   m_Name: HealthText (TMP)
   m_TagString: Health
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &817899921
 RectTransform:
   m_ObjectHideFlags: 0
