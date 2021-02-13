@@ -8,11 +8,11 @@ using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 {
 	[SerializeField] GameObject cameraHolder;
-
 	[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
 	[SerializeField] Item[] items;
-
+	
+	TMPro.TextMeshProUGUI healthText;
 	int itemIndex;
 	int previousItemIndex = -1;
 
@@ -49,6 +49,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 			Destroy(GetComponentInChildren<Camera>().gameObject);
 			Destroy(rb);
 		}
+
+		healthText = GameObject.FindWithTag("Health").GetComponent<TMPro.TextMeshProUGUI>();
 	}
 
 	void Update()
@@ -101,6 +103,8 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 		{
 			Die();
 		}
+
+		healthText.text = currentHealth.ToString();
 	}
 
 	void Look()

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -12,6 +12,7 @@ public class Launcher : MonoBehaviourPunCallbacks
 
 	[SerializeField] TMP_InputField roomNameInputField;
 	[SerializeField] TMP_InputField nickNameInputField;
+	[SerializeField] TMP_Text nickTaken;
 	[SerializeField] TMP_Text errorText;
 	[SerializeField] TMP_Text roomNameText;
 	[SerializeField] Transform roomListContent;
@@ -19,6 +20,9 @@ public class Launcher : MonoBehaviourPunCallbacks
 	[SerializeField] Transform playerListContent;
 	[SerializeField] GameObject PlayerListItemPrefab;
 	[SerializeField] GameObject startGameButton;
+	[SerializeField] GameObject findRoomButton;
+	[SerializeField] GameObject createRoomTitleButton;
+	[SerializeField] GameObject createRoomCreateButton;
 
 	void Awake()
 	{
@@ -34,19 +38,43 @@ public class Launcher : MonoBehaviourPunCallbacks
 	void Update()
 	{
 		string nick = nickNameInputField.text;
-		Player[] players = PhotonNetwork.PlayerList;
 
-		bool contains = false;
-
-		foreach(Player playa in players)
+		if (nick.Length == 0)
 		{
-			if (nick == playa.NickName)
-				contains = true;
+			nickTaken.text = "Fill nickname";
+			findRoomButton.SetActive(false);
+			createRoomButton.SetActive(false);
+		}
+		else if(nick.Contains(" "))
+		{
+			nickTaken.text = "No spaces allowed!";
+			findRoomButton.SetActive(false);
+			createRoomButton.SetActive(false);
+		}
+		else
+		{
+			nickTaken.text = "";
+			findRoomButton.SetActive(true);
+			createRoomButton.SetActive(true);
 		}
 
-		if (contains)
-		{
+		string roomName = roomNameInputField.text;
 
+		if (roomName.Length == 0)
+		{
+			
+			createRoomButton.SetActive(false);
+		}
+		else if(roomName[0] != ' ')
+		{
+			findRoomButton.SetActive(false);
+			createRoomButton.SetActive(false);
+		}
+		else
+		{
+			nickTaken.text = "";
+			findRoomButton.SetActive(true);
+			createRoomButton.SetActive(true);
 		}
 	}
 

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +37,7 @@ public class MenuManager : MonoBehaviour
 				CloseMenu(menus[i]);
 			}
 		}
-		menu.Open();
+		menu.Open(); 
 	}
 
 	public void CloseMenu(Menu menu)
