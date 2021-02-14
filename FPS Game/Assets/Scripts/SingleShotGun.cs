@@ -9,6 +9,8 @@ public class SingleShotGun : Gun
 
 	PhotonView PV;
 
+	bool activeShoot = false;
+
 	void Awake()
 	{
 		PV = GetComponent<PhotonView>();
@@ -16,10 +18,19 @@ public class SingleShotGun : Gun
 
 	public override void Use()
 	{
-		Shoot();
+		if (!activeShoot)
+		{
+			Shoot();
+			activeShoot = true;
+		}
 	}
 
-	void Shoot()
+	public override void Release()
+	{
+		activeShoot = false;
+	}
+
+	protected void Shoot()
 	{
 		Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f));
 		ray.origin = cam.transform.position;
@@ -32,7 +43,7 @@ public class SingleShotGun : Gun
 	}
 
 	[PunRPC]
-	void RPC_Shoot(Vector3 hitPosition, Vector3 hitNormal)
+	protected void RPC_Shoot(Vector3 hitPosition, Vector3 hitNormal)
 	{
 		Collider[] colliders = Physics.OverlapSphere(hitPosition, 0.3f);
 		if(colliders.Length != 0)
