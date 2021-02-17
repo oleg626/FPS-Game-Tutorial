@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	[SerializeField] float mouseSensitivity, sprintSpeed, walkSpeed, jumpForce, smoothTime;
 
 	[SerializeField] Item[] items;
+
+	[SerializeField] TMPro.TextMeshProUGUI current_ammo_text;
+	[SerializeField] TMPro.TextMeshProUGUI full_ammo_text;
 	
 	TMPro.TextMeshProUGUI healthText;
 	int itemIndex;
@@ -50,7 +53,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 			Destroy(rb);
 		}
 
-		healthText = GameObject.FindWithTag("Health").GetComponent<TMPro.TextMeshProUGUI>();
+		//healthText = GameObject.FindWithTag("Health").GetComponent<TMPro.TextMeshProUGUI>();
 	}
 
 	void Update()
@@ -108,7 +111,9 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 			Die();
 		}
 
-		healthText.text = currentHealth.ToString();
+		//healthText.text = currentHealth.ToString();
+		current_ammo_text.SetText(items[itemIndex].getCurrentAmmo());
+		full_ammo_text.SetText(items[itemIndex].getFullAmmo());
 	}
 
 	void Look()
@@ -189,6 +194,7 @@ public class PlayerController : MonoBehaviourPunCallbacks, IDamageable
 	[PunRPC]
 	void RPC_TakeDamage(float damage)
 	{
+		
 		if(!PV.IsMine)
 			return;
 

@@ -21,11 +21,9 @@ public class AutomaticGun : SingleShotGun
 
     public override void Use()
     {
-        Debug.Log(Time.time);
         if (Time.time - last_shoot > shoot_speed)
         {
             Shoot();
-            Debug.Log("Shoot");
             last_shoot = Time.time;
         }
     }
