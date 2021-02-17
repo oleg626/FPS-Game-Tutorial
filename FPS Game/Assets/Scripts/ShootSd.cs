@@ -19,7 +19,7 @@ public class ShootSd : MonoBehaviour
         {
 
        
-            mAudioSrc.Play();
+            mAudioSrc.PlayOneShot(mAudioSrc.clip);
         }
     }
 }
